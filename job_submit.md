@@ -1,8 +1,8 @@
 # Submit job on cluster
 
-#### Parallelize multi-threading jobs
+#### Parallelize multi-threaded jobs
 
-For a multi-threading job _example.sh_
+For a multi-threaded job _example.sh_
 
 ```bash
 #!/bin/bash
