@@ -5,5 +5,5 @@ Cheat sheets for coding.
 
 [ggplot2](./ggplot2.md) : Create plots with ggplot2 and other packages based on the grammar of ggplot2.
 
-[Submit job](./job_submit.md) : Parallelize jobs on Linux. 
+[Submit job](./submit_job.md) : Parallelize jobs on Linux. 
 
