@@ -57,3 +57,36 @@ fi
 
 ```
 
+
+
+#### Conditional job submission
+
+- Create a flag for finished job. Test the flag when submit jobs:
+
+  run.sh
+
+  ```bash
+  COMMAND TO RUN
+  [[ $? -eq 0 ]] && touch finish/JOBNAME.done
+  ```
+
+  submit.sh
+
+  ```bash
+  [[ ! -e finish/JOBNAME.done ]] && srun -N 1 -n 1 bash run.sh
+  ```
+
+- Submit job when two files are different
+
+  ```bash
+  ! cmp -s FILE1 FILE2 &&	srun -N 1 -n 1 bash run.sh
+  ```
+
+- Update analysis: Submit job when the input file is more recent than output file
+
+  ```bash
+  [[ INPUT -nt OUTPUT ]] && srun -N 1 -n 1 bash run.sh
+  ```
+
+  
+
