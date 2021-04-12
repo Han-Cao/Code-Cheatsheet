@@ -56,3 +56,14 @@ p + facet_grid(group ~ .)
 p + theme(strip.txt = element_blank(), strip.background = element_blank)
 ```
 
+
+
+#### Label multiple density plot
+
+```R
+library(directlabels)
+p <- ggplot(data) + geom_density(aes(x, color=ID))
+#label ID for each density plot at top points
+direct.label(p, "top.points")
+```
+
