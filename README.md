@@ -7,3 +7,5 @@ Cheat sheets for coding.
 
 [Submit job](./submit_job.md) : Parallelize jobs on Linux. 
 
+[Windows](./Windows.md) : Tools to fix strange issues created by Window10.
+
