@@ -2,13 +2,21 @@
 
 
 
-### Default packages
+### Default settings
 
 ---
+
+The following packages are loaded for all
 
 ```R
 library(dplyr)
 library(ggplot2)
+```
+
+If size of any element is given, it is used for output of tiff with 300 dpi
+
+```R
+tiff("output.tiff", res=300, unit="in", width=3, height=2)
 ```
 
 
@@ -98,5 +106,12 @@ ggplot(filter(ridge_df_density_diag, value > 0.25)) +
   geom_density(aes(value, density), stat = "identity", fill="grey80", size=0.3) + facet_grid(group ~ .)
 ```
 
+#### Overlay density plot color
 
+When overlay 2 density plot, the default color of ggplot2 is good when pink color is at back. If want to put blue color to back, the default color from matplotlib (python) is better.
+
+```R
+ggplot(df) + geom_density(aes(value, group=group, color=group, fill=group), size=0.4, alpha=0.2) +
+  scale_color_manual(values = c("#1f77b4","#ff7f0e")) + scale_fill_manual(values = c("#1f77b4","#ff7f0e"))
+```
 
