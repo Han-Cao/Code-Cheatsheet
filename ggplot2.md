@@ -115,3 +115,21 @@ ggplot(df) + geom_density(aes(value, group=group, color=group, fill=group), size
   scale_color_manual(values = c("#1f77b4","#ff7f0e")) + scale_fill_manual(values = c("#1f77b4","#ff7f0e"))
 ```
 
+
+
+### Heatmap
+
+---
+
+#### Heatmap with geom_tile
+
+```R
+library(RColorBrewer)
+
+heatmap_color <- brewer.pal(n=9, name="RdBu")
+ggplot(data=filter(expr_plot_df), aes(x, y, fill=value)) +  geom_tile(color="black") + 
+  scale_fill_gradient2(low = heatmap_color[9], mid = "white", high = heatmap_color[1]) +
+  theme(axis.text.x = element_text(angle = 90, vjust=0.3, hjust = 1), axis.title = element_blank(), 
+        text = element_text(face = "bold"), panel.background = element_blank(), axis.ticks = element_blank())
+```
+
