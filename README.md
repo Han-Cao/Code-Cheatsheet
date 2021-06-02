@@ -5,7 +5,7 @@ Cheat sheets for coding.
 
 [ggplot2](./ggplot2.md) : Create plots with ggplot2 and other packages based on the grammar of ggplot2.
 
-[Submit job](./submit_job.md) : Parallelize jobs on Linux. 
+[SLURM](./SLURM.md) : Environment setup and job submission on SLURM.
 
-[Windows](./Windows.md) : Tools to fix strange issues created by Window10.
+[Windows](./Windows.md) : Tools to fix strange issues created by Window 10.
 
