@@ -1,4 +1,4 @@
-# Submit job
+# SLURM
 
 #### VS code remote to Jupyter Notebook on SLURM
 
