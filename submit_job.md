@@ -1,5 +1,31 @@
 # Submit job
 
+#### VS code remote to Jupyter Notebook on SLURM
+
+This refers to [Running Jupyter on Slurm GPU Nodes (stanford.edu)](https://nero-docs.stanford.edu/jupyter-slurm.html) and [VS code docs](https://code.visualstudio.com/docs/python/jupyter-support-py)
+
+In VS code, ssh to the server and set up jupyter notebook on a computing node:
+
+```bash
+#Request a computing node on the cluster
+srun -p cpu -N 1 -n 40 --pty bash
+#set up jupyter notebook
+jupyter notebook --ip 0.0.0.0 --port 8888
+```
+
+Will get output like:
+
+```bash
+[I 15:37:41.813 NotebookApp] Jupyter Notebook 6.4.0 is running at:
+[I 15:37:41.813 NotebookApp] http://NODENAME:8888/?token=xxx
+[I 15:37:41.813 NotebookApp]  or http://127.0.0.1:8888/?token=xxx
+[I 15:37:41.813 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+```
+
+`Ctrl+Shift+P` and run "Jupyter: Specify local or remote Jupyter server for connections". Use the URL **http://NODENAME:8888/?token=xxx** not 127.0.0.1 to connect to the server.
+
+
+
 #### Parallelize multi-threaded jobs
 
 For a multi-threaded job _example.sh_
