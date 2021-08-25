@@ -16,7 +16,14 @@ library(ggplot2)
 If size of any element is given, it is used for output of tiff with 300 dpi
 
 ```R
-tiff("output.tiff", res=300, unit="in", width=3, height=2)
+tiff("output.tiff", res=300, unit="in")
+```
+
+Set theme globally
+
+```R
+theme_set(theme_classic() + 
+          theme(text = element_text(size = 12), axis.line = element_line(size = 0.2))))
 ```
 
 
