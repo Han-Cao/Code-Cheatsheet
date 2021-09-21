@@ -23,7 +23,7 @@ Set theme globally
 
 ```R
 theme_set(theme_classic() + 
-          theme(text = element_text(size = 12), axis.line = element_line(size = 0.2))))
+          theme(text = element_text(size = 12), axis.line = element_line(size = 0.2)))
 ```
 
 
