@@ -75,6 +75,34 @@ p + theme(strip.text = element_blank(), strip.background = element_blank())
 
 
 
+### Boxplot
+
+---
+
+#### Boxplot with p-value and sample size
+
+Source code from [here](https://stackoverflow.com/questions/3483203/create-a-boxplot-in-r-that-labels-a-box-with-the-sample-size-n)
+
+```R
+library(ggsignif)
+
+# calculate sample size and draw on bottom
+# change to y = median(x) if want to plot sample size at median line
+give.n <- function(x){
+  return(c(y = 0, label = length(x)))
+}
+
+
+ggplot(data) + geom_boxplot(aes(x, y, group=x)) + stat_summary(fun.data = give.n, geom = "text") +
+  # draw significance line from 0 to 2, at y = 5
+  geom_signif(tip_length = 0, xmin = 0, xmax = 2, y_position = 5, annotations = "**")
+
+```
+
+
+
+
+
 ### Density plot
 
 ---
