@@ -24,8 +24,6 @@ Will get output like:
 
 `Ctrl+Shift+P` and run "Jupyter: Specify local or remote Jupyter server for connections". Use the URL **http://NODENAME:8888/?token=xxx** not 127.0.0.1 to connect to the server.
 
-
-
 #### Parallelize multi-threaded jobs
 
 For a multi-threaded job _example.sh_
@@ -77,42 +75,57 @@ outpath={3}
 logpath={4}
 sample=$(basename $sample)
 if [[ ! -e /example/finish/${sample}.done  ]]; then
-	srun -N 1 -n 1 -c 10 -o ${logpath}${sample}.log bash test.sh $sample $inpath $outpath 
+    srun -N 1 -n 1 -c 10 -o ${logpath}${sample}.log bash test.sh $sample $inpath $outpath 
 fi
 ' :::: - ::: $inpath ::: $outpath ::: $logpath
-
 ```
-
-
 
 #### Conditional job submission
 
 - Create a flag for finished job. Test the flag when submit jobs:
-
+  
   run.sh
-
+  
   ```bash
   COMMAND TO RUN
   [[ $? -eq 0 ]] && touch finish/JOBNAME.done
   ```
-
+  
   submit.sh
+  
+  ```bash
+  [[ ! -e finish/JOBNAME.done ]] && srun -N 1 -n 1 bash run.sh
+  ```
 
+- Label both finished and error jobs:
+  
+  run.sh:
+  
+  ```bash
+  COMMAND TO RUN
+  if [[ $? -eq 0 ]]; then 
+      # always put error fix before mark finished, otherwise return exit code 1 if at end
+      [[ -e "error/JOBNAME.error" ]] && mv "error/sample.error" "error/sample.error_fixed"
+      touch "finish/JOBNAME.done"
+  else
+      touch "error/sample.error"
+  fi
+  ```
+  
+  submit.sh
+  
   ```bash
   [[ ! -e finish/JOBNAME.done ]] && srun -N 1 -n 1 bash run.sh
   ```
 
 - Submit job when two files are different
-
+  
   ```bash
-  ! cmp -s FILE1 FILE2 &&	srun -N 1 -n 1 bash run.sh
+  ! cmp -s FILE1 FILE2 &&    srun -N 1 -n 1 bash run.sh
   ```
 
 - Update analysis: Submit job when the input file is more recent than output file
-
+  
   ```bash
   [[ INPUT -nt OUTPUT ]] && srun -N 1 -n 1 bash run.sh
   ```
-
-  
-
