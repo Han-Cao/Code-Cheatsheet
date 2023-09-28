@@ -1,6 +1,4 @@
-# ggplot2 
-
-
+# ggplot2
 
 ### Default settings
 
@@ -26,11 +24,19 @@ theme_set(theme_classic() +
           theme(text = element_text(size = 12), axis.line = element_line(size = 0.2)))
 ```
 
-
-
 ### Plot multiple panels
 
 ---
+
+#### Plot  acrros columns
+
+```r
+plot_hist <- function(data, col){
+    ggplot(data, aes(!!sym(col))) + geom_histogram() + ggtitle(col) + scale_y_sqrt()
+}
+
+list_plot<- lapply(colnames(df_plot)[-1], plot_hist, data = df_plot)
+```
 
 #### Arrange multiple plots
 
@@ -73,8 +79,6 @@ p + facet_grid(group ~ .)
 p + theme(strip.text = element_blank(), strip.background = element_blank())
 ```
 
-
-
 ### Boxplot
 
 ---
@@ -96,12 +100,7 @@ give.n <- function(x){
 ggplot(data) + geom_boxplot(aes(x, y, group=x)) + stat_summary(fun.data = give.n, geom = "text") +
   # draw significance line from 0 to 2, at y = 5
   geom_signif(tip_length = 0, xmin = 0, xmax = 2, y_position = 5, annotations = "**")
-
 ```
-
-
-
-
 
 ### Density plot
 
@@ -150,8 +149,6 @@ ggplot(df) + geom_density(aes(value, group=group, color=group, fill=group), size
   scale_color_manual(values = c("#1f77b4","#ff7f0e")) + scale_fill_manual(values = c("#1f77b4","#ff7f0e"))
 ```
 
-
-
 ### Heatmap
 
 ---
@@ -167,4 +164,3 @@ ggplot(data=filter(expr_plot_df), aes(x, y, fill=value)) +  geom_tile(color="bla
   theme(axis.text.x = element_text(angle = 90, vjust=0.3, hjust = 1), axis.title = element_blank(), 
         text = element_text(face = "bold"), panel.background = element_blank(), axis.ticks = element_blank())
 ```
-
