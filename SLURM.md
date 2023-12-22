@@ -25,6 +25,21 @@ srun -N 1 -n 1 -c 20 bash example.sh
 '
 ```
 
+The above script may only run 1 job step due to the default configuration of the cluster. This can be solved to specify additional parameters:
+
+```bash
+#!/bin/bash
+
+#SBATCH -p partition
+#SBATCH -N 2 -n 4 -c 20
+#SBATCH --mem-per-cpu 4G
+
+# limit the memory and specify --exclusive to avoid one job consume all res
+parallel -j $SLURM_NTASKS '
+srun -N 1 -n 1 --exclusive --mem-per-cpu 4G -c 20 bash example.sh
+'
+```
+
 #### Notes for workflow tools
 
 Workflow tools (e.g, snakemake) are not suitable for parallelizing multiple job steps within one SLURM job. This is because the workflow itself cannot be submited by sbatch. For example, if we run:
@@ -38,8 +53,6 @@ snakemake -s workflow.smk
 ```
 
 SLURM will allocated the snakemake workflow to a single node, and all jobs within  `workflow.smk` will run on one node. Those workflow tools can only internally submit each job to SLURM by a wrapper of `sbatch` .
-
-
 
 #### Conditional job submission
 
