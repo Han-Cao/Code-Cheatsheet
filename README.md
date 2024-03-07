@@ -1,4 +1,5 @@
 # Code-Cheatsheet
+
 Cheat sheets for coding. 
 
 ### Index
@@ -9,3 +10,4 @@ Cheat sheets for coding.
 
 [Windows](./Windows.md) : Tools to fix strange issues created by Window 10.
 
+[VSCode](./VScode.md): Configure VS Code
