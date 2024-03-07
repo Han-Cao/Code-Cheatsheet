@@ -10,6 +10,4 @@ Cheat sheets for coding.
 
 [Windows](./Windows.md) : Tools to fix strange issues created by Window 10.
 
-[VSCode](./VSCode.md) : Configure VS Code
-
 
