@@ -8,6 +8,8 @@ Cheat sheets for coding.
 
 [SLURM](./SLURM.md) : Environment setup and job submission on SLURM.
 
+[Linux](./Linux.md) : Linux configuration
+
 [Windows](./Windows.md) : Tools to fix strange issues created by Window 10.
 
 
