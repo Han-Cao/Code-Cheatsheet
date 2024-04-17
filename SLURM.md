@@ -1,5 +1,17 @@
 # SLURM
 
+### Config
+
+Show start and eplapsed time of jobs in sacct output
+
+```bash
+export SACCT_FORMAT="jobid,jobname,partition,account,alloccpus,state,start,elapsed,exitcode"
+```
+
+
+
+```
+
 ### Parallelization
 
 #### Parallelize multi-threaded jobs
