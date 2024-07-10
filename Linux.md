@@ -1,5 +1,17 @@
 # Linux
 
+## Config
+
+### PS1
+```
+# Terminal PS1
+export PS1="\[\033[38;5;39m\][\u@\h \W]> \[$(tput sgr0)\]"
+
+# Remove conda prefix
+# save to miniconda3/etc/conda/activate.d/remove_base_ps1.sh
+PS1="$(echo "$PS1" | sed 's/(base) //')"
+```
+
 ## CentOS upgrade
 
 ### CentOS 8 to CentOS Stream8
