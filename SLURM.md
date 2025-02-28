@@ -8,10 +8,7 @@ Show start and eplapsed time of jobs in sacct output
 export SACCT_FORMAT="jobid,jobname,partition,account,alloccpus,state,start,elapsed,exitcode"
 ```
 
-
-
 ```
-
 ### Parallelization
 
 #### Parallelize multi-threaded jobs
@@ -150,6 +147,44 @@ fi
 ```
 
 ### VS code
+
+#### VS code remote-SSH to compute node
+
+This require the HPC allow SSH to compute node. In VS code, open "Remote-SSH: Open SSH Configuration File", configure the login node and compute node:
+
+```bash
+Host hpc-login
+  HostName address
+  User username
+
+Host hpc-compute
+  HostName node-name
+  User username
+  ProxyJump hpc-login
+```
+
+Then in "Remote-SSH", select the hpc-compute and login.
+
+
+
+#### VS code tunnel to compute node
+
+Install VS code cli and run `code tunnel`, follow instructions to login. If you are using an old version of VS code due to low `GLIBC` version, VS code tunnel may not correct install the old vscode-server, with log like:
+
+```
+rpc.3] Error installing server: error requesting https://update.code.visualstudio.com/commit:8b3775030ed1a69b13e4f4c628c612102e30a681/server-linux-legacy-x64/stable: 404 Not Found
+```
+
+Directly "Remote-SSH" to the login node should be able to install this version, then you can copy the binary files from ./vscode-server/ to ./vscode/:
+
+```
+mkdir -p .vscode/cli/servers/Stable-8b3775030ed1a69b13e4f4c628c612102e30a681/
+cp -r .vscode-server/bin/8b3775030ed1a69b13e4f4c628c612102e30a681 .vscode/cli/servers/Stable-8b3775030ed1a69b13e4f4c628c612102e30a681/server
+```
+
+Note: please replace the version with the one shown in log file
+
+
 
 #### VS code remote to Jupyter Notebook on SLURM
 
