@@ -1,5 +1,28 @@
 # Linux
 
+## Config
+
+### PS1
+```
+# Terminal PS1
+export PS1="\[\033[38;5;39m\][\u@\h \W]> \[$(tput sgr0)\]"
+```
+
+### Conda
+Move the conda initialization code from `.bashrc` to the end of `.bash_profile` to make sure conda/bin is the first PATH to search after activating conda enviroment
+```
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+...
+# <<< conda initialize <<<
+```
+
+Remove base conda prefix
+```
+# save to miniconda3/etc/conda/activate.d/remove_base_ps1.sh
+PS1="$(echo "$PS1" | sed 's/(base) //')"
+```
+
 ## CentOS upgrade
 
 ### CentOS 8 to CentOS Stream8

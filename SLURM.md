@@ -207,5 +207,4 @@ Will get output like:
 [I 15:37:41.813 NotebookApp]  or http://127.0.0.1:8888/?token=xxx
 [I 15:37:41.813 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 ```
-
-`Ctrl+Shift+P` and run "Jupyter: Specify local or remote Jupyter server for connections". Use the URL **http://NODENAME:8888/?token=xxx** not 127.0.0.1 to connect to the server.
+`Ctrl+Shift+P` and run "Jupyter: Create interactive window". Select kernal from existing server and use the URL **http://NODENAME:8888/?token=xxx** not 127.0.0.1 to connect to the server.
