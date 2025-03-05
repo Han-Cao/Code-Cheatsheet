@@ -49,6 +49,8 @@ srun -N 1 -n 1 --exclusive --mem-per-cpu 4G -c 20 bash example.sh
 '
 ```
 
+**Notes for uneven memory usage**: If differnet `srun` jobs can have very different memory usage. For example, job 1-5 each requires 10GB, while job 6 require 50GB. In this case, use `srun --mem=0` to unlimit per job memory. Need to make sure there is enough memory for all jobs running on the same node.
+
 #### Notes for workflow tools
 
 Workflow tools (e.g, snakemake) are not suitable for parallelizing multiple job steps within one SLURM job. This is because the workflow itself cannot be submited by sbatch. For example, if we run:
