@@ -24,6 +24,11 @@ theme_set(theme_classic() +
           theme(text = element_text(size = 12), axis.line = element_line(size = 0.2)))
 ```
 
+Generate PDF compatible with Adobe Illustrator. The parameter `useDingbats = FALSE` is the default after R 4.0, remember to include this for earlier R versions.
+```R
+pdf(useDingbats = FALSE)
+```
+
 ### Plot multiple panels
 
 ---
