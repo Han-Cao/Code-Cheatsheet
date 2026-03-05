@@ -9,18 +9,41 @@ export PS1="\[\033[38;5;39m\][\u@\h \W]> \[$(tput sgr0)\]"
 ```
 
 ### Conda
-Move the conda initialization code from `.bashrc` to the end of `.bash_profile` to make sure conda/bin is the first PATH to search after activating conda enviroment
-```
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-...
-# <<< conda initialize <<<
-```
 
 Remove base conda prefix
 ```
 # save to miniconda3/etc/conda/activate.d/remove_base_ps1.sh
 PS1="$(echo "$PS1" | sed 's/(base) //')"
+```
+Using libraries installed in conda env
+
+```bash
+# to include libraries in conda env "lib"
+export CPATH=$HOME/miniconda3/envs/lib/include/:$CPATH
+export LIBRARY_PATH=$HOME/miniconda3/envs/lib/lib/:$LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/miniconda3/envs/lib/lib/:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$HOME/miniconda3/envs/lib/lib/pkgconfig:$PKG_CONFIG_PATH
+```
+
+
+## SSH
+
+### Port forwarding
+
+Set up port forwarding to access ports on remote host
+
+```bash
+ssh -L local_port:destination_host:destination_port username@ssh_server
+```
+
+Example: access rclone web UI
+```bash
+# remote:
+rclone rcd --rc-web-gui --rc-addr=localhost:5572 --rc-no-auth
+# local:
+ssh -L 5572:localhost:5572 username@ssh_server
+# access web UI
+http://localhost:5572
 ```
 
 ## CentOS upgrade
