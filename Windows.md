@@ -33,3 +33,6 @@ create partition primary
 select partition 1
 format fs=fat32 quick
 ```
+
+#### Fix for Edge clear all cache
+Refer to [this](https://www.reddit.com/r/MicrosoftEdge/comments/1l7fnkd/workaround_fix_for_edge_resetting_all/). If Edge automatically reset all website and bookmarks, opten Task Manager and kill "Game Assist". Then re-open edge should work.
