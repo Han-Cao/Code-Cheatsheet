@@ -36,3 +36,12 @@ format fs=fat32 quick
 
 #### Fix for Edge clear all cache
 Refer to [this](https://www.reddit.com/r/MicrosoftEdge/comments/1l7fnkd/workaround_fix_for_edge_resetting_all/). If Edge automatically reset all website and bookmarks, opten Task Manager and kill "Game Assist". Then re-open edge should work.
+
+#### Disable hardware acceleration for Office 365
+
+I once found my working PC was extremely slow. After a long time of troubleshooting, I figured out the problem was caused by hardware acceleration in Office 365 (enabled after I repaire Office 365 Apps). To disable it (refer to [this](https://www.top-password.com/blog/disable-hardware-graphic-acceleration-for-office/)):
+
+1. run regedit
+2. go to HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Graphics (create if missing)
+3. create a new DWORD (32-bit) DisableHardwareAcceleration and set the value to 1
+4. restart PC

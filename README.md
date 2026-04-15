@@ -10,6 +10,4 @@ Cheat sheets for coding.
 
 [Linux](./Linux.md) : Linux configuration
 
-[Windows](./Windows.md) : Tools to fix strange issues created by Window 10.
-
-
+[Windows](./Windows.md) : Tools to fix crazy issues created by Microsoft!
